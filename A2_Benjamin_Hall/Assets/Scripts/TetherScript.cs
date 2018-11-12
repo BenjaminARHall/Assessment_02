@@ -60,7 +60,7 @@ public class TetherScript : MonoBehaviour {
         {
             tether.GetComponent<Rigidbody>().useGravity = false;
             tether.GetComponent<Rigidbody>().isKinematic = true;
-            tether.transform.localPosition.initialLocalPosition;
+           // tether.transform.localPosition.initialLocalPosition;
         }
     }
 }
