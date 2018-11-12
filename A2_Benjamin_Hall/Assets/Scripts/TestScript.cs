@@ -68,6 +68,7 @@ public class TestScript : MonoBehaviour {
             rope.SetVertexCount(2);
             rope.SetPosition(0, hookHolder.transform.position);
             rope.SetPosition(1, hook.transform.position);
+            Debug.Log("HERE");
         }
 
         if (fired == true && hooked == false)
