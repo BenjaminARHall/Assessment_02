@@ -8,6 +8,7 @@ public class TetherScript : MonoBehaviour {
     public GameObject tether;
     public GameObject tetherGun;
     public float tetherDistance;
+    
 
 
     private Vector3 initialLocalPosition;
@@ -34,7 +35,7 @@ public class TetherScript : MonoBehaviour {
         {
             tether.GetComponent<Rigidbody>().useGravity = true;
             tether.GetComponent<Rigidbody>().isKinematic = false;
-            tether.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+            tether.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
             int layerMask = 1 << 9;
 
             // This would cast rays only against colliders in layer 8.
