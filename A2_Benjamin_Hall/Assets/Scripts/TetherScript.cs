@@ -35,7 +35,9 @@ public class TetherScript : MonoBehaviour {
         {
             tether.GetComponent<Rigidbody>().useGravity = true;
             tether.GetComponent<Rigidbody>().isKinematic = false;
-            tether.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+            tether.GetComponent<Rigidbody>().AddForce(transform.forward * 2000);
+            
+
             int layerMask = 1 << 9;
 
             // This would cast rays only against colliders in layer 8.
@@ -47,6 +49,7 @@ public class TetherScript : MonoBehaviour {
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
                 hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
+
                
                 Debug.Log("Did Hit");
                 
@@ -61,7 +64,10 @@ public class TetherScript : MonoBehaviour {
         {
             tether.GetComponent<Rigidbody>().useGravity = false;
             tether.GetComponent<Rigidbody>().isKinematic = true;
-           // tether.transform.localPosition.initialLocalPosition;
+            tether.transform.localPosition = initialLocalPosition;
+
+            
+           
         }
     }
 }
