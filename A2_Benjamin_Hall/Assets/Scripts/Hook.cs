@@ -30,7 +30,7 @@ public class Hook : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(cam.position, cam.forward, out hit))
+            if (Physics.Raycast(cam.position, cam.forward, out hit) && (hit.transform.tag == "tetherPoint"))
             {
                 cc.mouseLook.XSensitivity = 0;
                 cc.mouseLook.YSensitivity = 0;
