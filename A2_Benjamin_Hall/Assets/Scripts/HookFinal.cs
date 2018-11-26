@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+
+public enum GrapplingHookMode {Ratcheting, Loose, Rigid}
+
 public class HookFinal : MonoBehaviour {
     //https://github.com/ZacharyBuffone/UnityGrapplingHookComponent
     public Camera cam;
 
-    public GrapplingHookMode grappling_hook_mode;
+    public GrapplingHookMode grapplingHookMode;
 
     public bool drawDevLine = true;
     public bool disconnectOnLosBreak;
     public float breakTetherVelo;
 
-    public enum GrapplingHookMode {Ratcheting, Loose, Rigid};
-
+   
     public Rigidbody rb;
     public GameObject playerCamera;
 
@@ -31,9 +33,9 @@ public class HookFinal : MonoBehaviour {
         {
             grapplingLine = new GameObject("GrapplingLine");
             grapplingLine.SetActive(false);
-            LineRenderer line_renderer = grapplingLine.AddComponent<LineRenderer>();
-            line_renderer.endWidth = 0.1f;
-            line_renderer.startWidth = .01f;
+            LineRenderer lineRenderer = grapplingLine.AddComponent<LineRenderer>();
+            lineRenderer.endWidth = 0.5f;
+            lineRenderer.startWidth = 0.5f;
         }
         hookedNode = null;
         return;
@@ -45,11 +47,11 @@ public class HookFinal : MonoBehaviour {
         {
             Ray ray = this.cam.ViewportPointToRay(new Vector3(.5f, .5f, 0));
 
-            RaycastHit raycast_hit;
-            if (Physics.Raycast(ray, out raycast_hit) &&(raycast_hit.transform.tag == "tetherPoint"))
+            RaycastHit raycastHit;
+            if (Physics.Raycast(ray, out raycastHit) &&(raycastHit.transform.tag == "tetherPoint"))
             {
                 Debug.Log("Hit");
-                hookedNode = raycast_hit.collider.gameObject;
+                hookedNode = raycastHit.collider.gameObject;
                 nodeDistance = nodeStartDistance = (Vector3.Distance(hookedNode.transform.position, gameObject.transform.position));
 
                 if (drawDevLine)
@@ -96,7 +98,7 @@ public class HookFinal : MonoBehaviour {
             Vector3 currentSpeed = rb.velocity * Time.fixedDeltaTime;
             Vector3 testPos = gameObject.transform.position + currentSpeed;
 
-            if (grappling_hook_mode == GrapplingHookMode.Ratcheting)
+            if (grapplingHookMode == GrapplingHookMode.Ratcheting)
             {
 
 
@@ -111,7 +113,7 @@ public class HookFinal : MonoBehaviour {
                 }
             }
 
-            else if (grappling_hook_mode == GrapplingHookMode.Loose)
+            else if (grapplingHookMode == GrapplingHookMode.Loose)
             {
                 if (Vector3.Distance(testPos, hookedNode.transform.position) > nodeDistance)
                 {
@@ -122,6 +124,8 @@ public class HookFinal : MonoBehaviour {
             {
                 ApplyTensionForce(currentSpeed, testPos);
             }
+
+           
         }
                return;
     }
@@ -139,7 +143,7 @@ public class HookFinal : MonoBehaviour {
 
     public void ChangeGrapplingMode(GrapplingHookMode mode)
     {
-        grappling_hook_mode = mode;
+        grapplingHookMode = mode;
         return;
     }
 

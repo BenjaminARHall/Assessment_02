@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -987,9 +987,29 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114945344714278078, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120772052875678644, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1435176225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436806962968574, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1312646676}
+--- !u!20 &1435176230 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20270807344896166, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1312646676}
 --- !u!1 &1580142412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1294,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -91.287}
+--- !u!1 &1965743103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1463573587780532, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1312646676}
+--- !u!114 &1965743111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965743103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2d428d311211c4eb5b0a0da4e5c76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1435176230}
+  grapplingHookMode: 0
+  drawDevLine: 1
+  disconnectOnLosBreak: 0
+  breakTetherVelo: 100000
+  rb: {fileID: 0}
+  playerCamera: {fileID: 1435176225}
+  hookedNode: {fileID: 0}
+  nodeDistance: 0
+  nodeStartDistance: 0
+  grapplingLine: {fileID: 0}
 --- !u!1 &2072726960
 GameObject:
   m_ObjectHideFlags: 0
