@@ -20,9 +20,55 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
+            //public Transform camera;
+            //public GameObject hookPoint;
+            //public Rigidbody player;
+            //public bool hooked = false;
+            //private RaycastHit hit;
+           //public HingeJoint hook;
+
 #if !MOBILE_INPUT
             private bool m_Running;
 #endif
+            //public void Update()
+            //{
+            //    if (Input.GetMouseButtonDown(0))
+            //    {
+            //        if(Physics.Raycast(camera.position, camera.forward, out hit) && (hit.transform.tag == "tetherPoint"))
+            //        {
+            //            Debug.Log("Hit");
+            //            DoJoint();
+            //        }
+            //    }
+
+            //    if(Input.GetMouseButtonUp(0))
+            //    {
+            //        UndoJoint();
+            //    }
+            //}
+
+            //public void DoJoint()
+            //{
+            //    hooked = !hooked;
+            //    if (hooked)
+            //    {
+            //        hookPoint.AddComponent<HingeJoint>();
+            //        hookPoint.GetComponent<HingeJoint>().connectedBody = player;
+            //        player.AddForce(Vector3.up * 1000);
+            //    }
+            //    else
+            //    {
+            //        Destroy(hookPoint.GetComponent<HingeJoint>());
+            //    }
+
+            //}
+
+            //public void UndoJoint()
+            //{
+            //    hooked = !hooked;
+            //    Destroy(hookPoint.GetComponent<HingeJoint>());
+            //}
+
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
@@ -81,7 +127,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
-
+        public bool hooked = false;
 
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
@@ -128,7 +174,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-            RotateView();
+            if(!hooked)
+             RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
