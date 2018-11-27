@@ -291,6 +291,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455513064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114604702761604102, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 962933775}
+  m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
 --- !u!1001 &507955404
 Prefab:
   m_ObjectHideFlags: 0
@@ -851,6 +857,35 @@ Prefab:
     - target: {fileID: 4272118674090858, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 54674441898224376, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54674441898224376, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114672816022279526, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: boost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463573587780532, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114672816022279526, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: cc
+      value: 
+      objectReference: {fileID: 455513064}
+    - target: {fileID: 54674441898224376, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}

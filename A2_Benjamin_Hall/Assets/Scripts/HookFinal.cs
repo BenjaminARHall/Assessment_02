@@ -19,7 +19,7 @@ public class HookFinal : MonoBehaviour {
     //public float damper;
     //public float spring;
     public Rigidbody rb;
-   // public RigidbodyFirstPersonController cc;
+    public RigidbodyFirstPersonController cc;
 
 
     void Start()
@@ -53,7 +53,7 @@ public class HookFinal : MonoBehaviour {
         hooked = !hooked;
         if (hooked)
         {
-            player.AddForce(Vector3.up * boost);
+            player.AddForce(Vector3.back * boost);
             StartCoroutine(Hooked());
         }
         else
@@ -67,12 +67,16 @@ public class HookFinal : MonoBehaviour {
 
     IEnumerator Hooked()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
            // rb.isKinematic = true;
             hookPoint.AddComponent<HingeJoint>();
            hookPoint.GetComponent<HingeJoint>().connectedBody = player;
-        //cc.mouseLook.XSensitivity = 0;
-       // cc.mouseLook.YSensitivity = 0;
+        if (Input.GetMouseButtonUp(0))
+        {
+            UndoJoint();
+        }
+        // cc.mouseLook.XSensitivity = 0;
+        //  cc.mouseLook.YSensitivity = 0;
         //  rb.constraints = RigidbodyConstraints.FreezeRotationY;
         // rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 
@@ -81,6 +85,8 @@ public class HookFinal : MonoBehaviour {
         // hookPoint.GetComponent<SpringJoint>().damper = damper;
         // hookPoint.GetComponent<SpringJoint>().spring = spring;
         // hookPoint.GetComponent<SpringJoint>().enablePreprocessing = true;
+
+        yield break;
     }
 
     public void UndoJoint()
