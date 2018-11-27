@@ -127,7 +127,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
-        public bool hooked = false;
+        //public bool hooked = false;
 
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
@@ -174,7 +174,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-            if(!hooked)
+            //if(!hooked)
              RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)

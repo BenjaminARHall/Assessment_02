@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityStandardAssets.CrossPlatformInput;
 
 
 
@@ -12,9 +13,25 @@ public class HookFinal : MonoBehaviour {
     public Rigidbody player;
     public bool hooked = false;
     private RaycastHit hit;
+    public float boost;
+    //public float minD;
+    //public float maxD;
+    //public float damper;
+    //public float spring;
+    public Rigidbody rb;
+   // public RigidbodyFirstPersonController cc;
 
-    public void Update()
+
+    void Start()
     {
+        rb = GetComponent<Rigidbody>();
+       // rb.isKinematic = false;
+       // rb.useGravity = true;
+    }
+
+    public void FixedUpdate()
+    {
+        
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(camera.position, camera.forward, out hit) && (hit.transform.tag == "tetherPoint"))
@@ -36,22 +53,44 @@ public class HookFinal : MonoBehaviour {
         hooked = !hooked;
         if (hooked)
         {
-
-            hookPoint.AddComponent<HingeJoint>();
-            hookPoint.GetComponent<HingeJoint>().connectedBody = player;
-            player.AddForce(Vector3.up * 1000);
+            player.AddForce(Vector3.up * boost);
+            StartCoroutine(Hooked());
         }
         else
         {
             Destroy(hookPoint.GetComponent<HingeJoint>());
+          //  rb.constraints = RigidbodyConstraints.None;
+           // rb.isKinematic = false;
         }
 
     }
 
+    IEnumerator Hooked()
+    {
+        yield return new WaitForSeconds(1f);
+           // rb.isKinematic = true;
+            hookPoint.AddComponent<HingeJoint>();
+           hookPoint.GetComponent<HingeJoint>().connectedBody = player;
+        //cc.mouseLook.XSensitivity = 0;
+       // cc.mouseLook.YSensitivity = 0;
+        //  rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        // rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+
+        // hookPoint.GetComponent<SpringJoint>().minDistance = minD;
+        // hookPoint.GetComponent<SpringJoint>().maxDistance = maxD;
+        // hookPoint.GetComponent<SpringJoint>().damper = damper;
+        // hookPoint.GetComponent<SpringJoint>().spring = spring;
+        // hookPoint.GetComponent<SpringJoint>().enablePreprocessing = true;
+    }
+
     public void UndoJoint()
     {
+        rb.isKinematic = false;
         hooked = !hooked;
         Destroy(hookPoint.GetComponent<HingeJoint>());
+       // cc.mouseLook.XSensitivity = 5;
+       // cc.mouseLook.YSensitivity = 5;
+        // rb.constraints = RigidbodyConstraints.None;
     }
 
 

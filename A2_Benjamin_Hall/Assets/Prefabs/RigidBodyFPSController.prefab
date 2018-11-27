@@ -42,8 +42,7 @@ GameObject:
   - component: {fileID: 136763531919233498}
   - component: {fileID: 114604702761604102}
   - component: {fileID: 120772052875678644}
-  - component: {fileID: 114579656211439154}
-  - component: {fileID: 114945344714278078}
+  - component: {fileID: 114672816022279526}
   m_Layer: 0
   m_Name: RigidBodyFPSController
   m_TagString: Untagged
@@ -73,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463573587780532}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0.877, z: 0}
+  m_LocalPosition: {x: -45.1, y: 73.8, z: 62.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339202270610456}
@@ -155,13 +154,13 @@ Rigidbody:
   m_GameObject: {fileID: 1463573587780532}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 100
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!81 &81592929900996290
 AudioListener:
   m_ObjectHideFlags: 1
@@ -169,26 +168,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436806962968574}
   m_Enabled: 1
---- !u!114 &114579656211439154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463573587780532}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e63755fc394070498e01e942ad89bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tether: {fileID: 0}
-  gun: {fileID: 0}
-  tetherTravelSpeed: 0
-  playerTravelSpeed: 0
-  tethered: 0
-  tetherTarget: {fileID: 0}
-  maxDistance: 0
-  currentDistance: 0
-  origin: {x: 0, y: 0, z: 0}
 --- !u!114 &114604702761604102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,6 +236,24 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+--- !u!114 &114672816022279526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463573587780532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2d428d311211c4eb5b0a0da4e5c76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 4339202270610456}
+  hookPoint: {fileID: 0}
+  player: {fileID: 54674441898224376}
+  hooked: 0
+  boost: 10000
+  rb: {fileID: 54674441898224376}
+  cc: {fileID: 114604702761604102}
 --- !u!114 &114743533162972362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,23 +327,6 @@ MonoBehaviour:
   rigidbodyFirstPersonController: {fileID: 114604702761604102}
   StrideInterval: 4
   RunningStrideLengthen: 0.722
---- !u!114 &114945344714278078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463573587780532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a0717467cc0c24ab753f24a3d06c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 4339202270610456}
-  attached: 0
-  momentum: 0
-  speed: 15
-  step: 0
-  cc: {fileID: 114604702761604102}
 --- !u!120 &120772052875678644
 LineRenderer:
   m_ObjectHideFlags: 1
