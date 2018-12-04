@@ -9,22 +9,26 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class HookFinal : MonoBehaviour {
     public Transform camera;
+    
     public GameObject hookPoint;
     public Rigidbody player;
     public bool hooked = false;
     private RaycastHit hit;
     public float boost;
+    public bool detectCollisions;
     //public float minD;
     //public float maxD;
     //public float damper;
     //public float spring;
     public Rigidbody rb;
     public RigidbodyFirstPersonController cc;
+   
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
        // rb.isKinematic = false;
        // rb.useGravity = true;
     }
@@ -53,7 +57,8 @@ public class HookFinal : MonoBehaviour {
         hooked = !hooked;
         if (hooked)
         {
-            player.AddForce(Vector3.back * boost);
+           cc.m_Jump = true;
+            player.AddForce(Vector3.up * boost);
             StartCoroutine(Hooked());
         }
         else

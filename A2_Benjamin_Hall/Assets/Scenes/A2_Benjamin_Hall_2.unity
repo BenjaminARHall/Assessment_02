@@ -871,7 +871,7 @@ Prefab:
     - target: {fileID: 114672816022279526, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
         type: 2}
       propertyPath: boost
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1463573587780532, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
       propertyPath: m_TagString
@@ -886,6 +886,16 @@ Prefab:
         type: 2}
       propertyPath: m_AngularDrag
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54674441898224376, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54674441898224376, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
