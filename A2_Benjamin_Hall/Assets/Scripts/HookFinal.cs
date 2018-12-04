@@ -7,9 +7,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 
 
-public class HookFinal : MonoBehaviour {
+public class HookFinal : MonoBehaviour
+{
     public Transform camera;
-    
+
     public GameObject hookPoint;
     public Rigidbody player;
     public bool hooked = false;
@@ -22,20 +23,22 @@ public class HookFinal : MonoBehaviour {
     //public float spring;
     public Rigidbody rb;
     public RigidbodyFirstPersonController cc;
-   
 
+    private HingeJoint joint;
+    private MouseLook mouseLook;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
-       // rb.isKinematic = false;
-       // rb.useGravity = true;
+        mouseLook = cc.mouseLook;
+
+        // rb.isKinematic = false;
+        // rb.useGravity = true;
     }
 
     public void FixedUpdate()
     {
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(camera.position, camera.forward, out hit) && (hit.transform.tag == "tetherPoint"))
@@ -50,6 +53,12 @@ public class HookFinal : MonoBehaviour {
         {
             UndoJoint();
         }
+
+        //if (hookPoint)
+        //{
+        //    transform.position += hingeSim.transform.localPosition;
+        //    hingeSim.transform.localPosition = Vector3.zero;
+        //}
     }
 
     public void DoJoint()
@@ -57,15 +66,15 @@ public class HookFinal : MonoBehaviour {
         hooked = !hooked;
         if (hooked)
         {
-           cc.m_Jump = true;
+            cc.m_Jump = true;
             player.AddForce(Vector3.up * boost);
             StartCoroutine(Hooked());
         }
         else
         {
-            Destroy(hookPoint.GetComponent<HingeJoint>());
-          //  rb.constraints = RigidbodyConstraints.None;
-           // rb.isKinematic = false;
+            Destroy(joint);
+            //  rb.constraints = RigidbodyConstraints.None;
+            // rb.isKinematic = false;
         }
 
     }
@@ -73,9 +82,11 @@ public class HookFinal : MonoBehaviour {
     IEnumerator Hooked()
     {
         yield return new WaitForSeconds(0.5f);
-           // rb.isKinematic = true;
-            hookPoint.AddComponent<HingeJoint>();
-           hookPoint.GetComponent<HingeJoint>().connectedBody = player;
+        // rb.isKinematic = true;
+        joint = hookPoint.AddComponent<HingeJoint>();
+        mouseLook.joint = joint;
+        joint.connectedBody = rb;
+
         if (Input.GetMouseButtonUp(0))
         {
             UndoJoint();
@@ -98,9 +109,10 @@ public class HookFinal : MonoBehaviour {
     {
         rb.isKinematic = false;
         hooked = !hooked;
-        Destroy(hookPoint.GetComponent<HingeJoint>());
-       // cc.mouseLook.XSensitivity = 5;
-       // cc.mouseLook.YSensitivity = 5;
+        hookPoint = null;
+        Destroy(joint);
+        // cc.mouseLook.XSensitivity = 5;
+        // cc.mouseLook.YSensitivity = 5;
         // rb.constraints = RigidbodyConstraints.None;
     }
 
