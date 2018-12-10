@@ -928,6 +928,11 @@ Prefab:
       propertyPath: hingeSim
       value: 
       objectReference: {fileID: 1321471993}
+    - target: {fileID: 114672816022279526, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19d881c9c8d81e4ea4c3010524b4f6e, type: 2}
   m_IsPrefabAsset: 0
@@ -1038,6 +1043,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1173332940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4339202270610456, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 962933775}
 --- !u!1001 &1232419313
 Prefab:
   m_ObjectHideFlags: 0
@@ -1153,6 +1163,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1471613047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1463573587780532, guid: b19d881c9c8d81e4ea4c3010524b4f6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 962933775}
+--- !u!114 &1471613048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471613047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a0717467cc0c24ab753f24a3d06c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1173332940}
+  attached: 0
+  momentum: 0
+  speed: 30
+  step: 0
+  cc: {fileID: 455513064}
+--- !u!114 &1471613049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471613047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738925076a9234141b77bb56ea12e284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tether: {fileID: 0}
+  tetherGun: {fileID: 0}
+  tetherDistance: 0
 --- !u!1 &1580142412
 GameObject:
   m_ObjectHideFlags: 0
