@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23521439785796862}
   - component: {fileID: 65397139833542206}
   m_Layer: 9
-  m_Name: Cube
+  m_Name: Grapple Points
   m_TagString: tetherPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

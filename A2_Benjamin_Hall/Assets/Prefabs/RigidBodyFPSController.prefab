@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 136763531919233498}
   - component: {fileID: 114604702761604102}
   - component: {fileID: 120772052875678644}
-  - component: {fileID: 114672816022279526}
+  - component: {fileID: 114315440817067250}
   m_Layer: 0
   m_Name: RigidBodyFPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,17 +65,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1886345204647986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4219743281334784}
+  - component: {fileID: 54453961972907942}
+  m_Layer: 0
+  m_Name: HingeSim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4219743281334784
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886345204647986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4272118674090858}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4272118674090858
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463573587780532}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000016292068}
   m_LocalPosition: {x: -45.1, y: 73.8, z: 62.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339202270610456}
+  - {fileID: 4219743281334784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -146,6 +176,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!54 &54453961972907942
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886345204647986}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0.5
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54674441898224376
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -154,8 +199,8 @@ Rigidbody:
   m_GameObject: {fileID: 1463573587780532}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 100
-  m_AngularDrag: 0
+  m_Drag: 1
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -168,6 +213,23 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436806962968574}
   m_Enabled: 1
+--- !u!114 &114315440817067250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463573587780532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a0717467cc0c24ab753f24a3d06c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 4339202270610456}
+  attached: 0
+  momentum: 0
+  speed: 30
+  step: 20
+  cc: {fileID: 114604702761604102}
 --- !u!114 &114604702761604102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,30 +292,17 @@ MonoBehaviour:
     smooth: 1
     smoothTime: 18
     lockCursor: 1
+    joint: {fileID: 0}
   advancedSettings:
     groundCheckDistance: 0.1
     stickToGroundHelperDistance: 0.6
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
---- !u!114 &114672816022279526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463573587780532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2d428d311211c4eb5b0a0da4e5c76c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 4339202270610456}
-  hookPoint: {fileID: 0}
-  player: {fileID: 54674441898224376}
-  hooked: 0
-  boost: 10000
-  rb: {fileID: 54674441898224376}
-  cc: {fileID: 114604702761604102}
+  m_Jump: 0
+  m_PreviouslyGrounded: 0
+  m_Jumping: 0
+  m_IsGrounded: 0
 --- !u!114 &114743533162972362
 MonoBehaviour:
   m_ObjectHideFlags: 1
