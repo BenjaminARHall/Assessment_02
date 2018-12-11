@@ -39,8 +39,10 @@ public class Hook : MonoBehaviour {
 
             }
             else
+            {
                 attached = false;
                 rb.isKinematic = false;
+            }
 
         }
         if(Input.GetMouseButtonUp(0))
