@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
     private float _timeRemaining;
@@ -39,15 +40,15 @@ public class GameManager : Singleton<GameManager> {
 
     }
 
-    private void OnEnable()
-    {
-        DamagePlayerEvent.OnDamagePlayer += DecrementPlayerHealth;
-    }
+    //private void OnEnable()
+    //{
+    //    DamagePlayerEvent.OnDamagePlayer += DecrementPlayerHealth;
+    //}
 
-    private void OnDisable()
-    {
-        DamagePlayerEvent.OnDamagePlayer -= DecrementPlayerHealth;
-    }
+    //private void OnDisable()
+    //{
+    //    DamagePlayerEvent.OnDamagePlayer -= DecrementPlayerHealth;
+    //}
     // Use this for initialization
     void Start()
     {
@@ -97,7 +98,7 @@ public class GameManager : Singleton<GameManager> {
             Application.LoadLevel(Application.loadedLevel);
             TimeRemaining = maxTime;
             PlayerHealth = maxHealth;
-            NumCoins = 0;
+            NumRings = 0;
         }
     }
 
