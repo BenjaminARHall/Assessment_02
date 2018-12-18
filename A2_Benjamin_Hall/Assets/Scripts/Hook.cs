@@ -6,6 +6,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Hook : MonoBehaviour {
 
+    
+   
+
     public Transform cam;
 
     private RaycastHit hit;
@@ -18,15 +21,21 @@ public class Hook : MonoBehaviour {
     public float speed;
     public float step;
     public RigidbodyFirstPersonController cc;
+
+    
+    
+
+    
     
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();	
+
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -36,12 +45,14 @@ public class Hook : MonoBehaviour {
                 cc.mouseLook.YSensitivity = 0;
                 attached = true;
                 rb.isKinematic = true;
+                
 
             }
             else
             {
                 attached = false;
                 rb.isKinematic = false;
+                
             }
 
         }
@@ -52,6 +63,7 @@ public class Hook : MonoBehaviour {
             attached = false;
             rb.isKinematic = false;
             rb.velocity = cam.forward * momentum;
+            StartCoroutine(LoseMomentum());
         }
 
         if (attached)
@@ -59,13 +71,20 @@ public class Hook : MonoBehaviour {
             momentum += Time.deltaTime * speed;
             step = momentum * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, hit.point, step);
+            
         }
 
         if (attached && momentum >= 0)
         {
             momentum -= Time.deltaTime * 5;
             step = 0;
+            StartCoroutine(CapMomentum());
         }
+
+        //if (attached && momentum == 20)
+        //{
+        //    momentum = 20;
+        //}
 
         if(cc.Grounded && momentum <= 0)
         {
@@ -73,4 +92,27 @@ public class Hook : MonoBehaviour {
             step = 0;
         }
 	}
+
+    IEnumerator LoseMomentum()
+    {
+        yield return new WaitForSeconds(1);
+        for(float m = momentum; momentum > 0; momentum-- )
+        {
+            
+            yield return null;
+        }
+    }
+
+    IEnumerator CapMomentum()
+
+    {
+        
+        for (float m = momentum; momentum ==20;)
+        {           
+            yield return null;
+        }
+    }
+
 }
+
+
